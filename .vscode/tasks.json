@@ -1,0 +1,65 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Compile Resources",
+      "type": "shell",
+      "command": "windres.exe",
+      "args": [
+        "-i",
+        "${workspaceFolder}\\Oneko.rc",
+        "-o",
+        "${workspaceFolder}\\Oneko_res.o"
+        // "--use-temp-file"
+      ],
+      "options": {
+        "env": {
+          "PATH": "${env:PATH};C:\\msys64\\mingw64\\bin\\"
+        }
+      },
+      "group": {
+        "kind": "build"
+        // "isDefault": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Build Executable",
+      "type": "shell",
+      "command": "g++.exe",
+      "args": [
+        "-g",
+        "${workspaceFolder}\\Oneko.cpp",
+        "${workspaceFolder}\\Oneko_res.o",
+        "-o",
+        "${workspaceFolder}\\Oneko.exe",
+        "-lgdi32",
+        "-lgdiplus",
+        "-lwinmm",
+        "-lole32",
+        "-mwindows"
+      ],
+      "options": {
+        "PATH": "${env:PATH};C:\\msys64\\mingw64\\bin\\"
+      },
+      "problemMatcher": ["$gcc"],
+      "group": {
+        "kind": "build"
+        // "isDefault": true
+      },
+      "dependsOn": "Compile Resources",
+      "detail": "compiler: C:\\msys64\\mingw64\\bin\\g++.exe"
+    },
+    {
+      "label": "Run Executable",
+      "type": "shell",
+      "command": "${workspaceFolder}/Oneko.exe",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "dependsOn": "Build Executable",
+      "problemMatcher": []
+    }
+  ]
+}
