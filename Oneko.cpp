@@ -112,7 +112,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
 
         // Initialize GDI+ graphics object with memory buffer
         Graphics graphics(memDC);
-        // graphics.SetInterpolationMode(InterpolationModeNearestNeighbor);
+        graphics.SetInterpolationMode(InterpolationModeNearestNeighbor);
 
         // Draw the current image with offset
         if (images[nekoFrame]) {
@@ -195,7 +195,7 @@ void LoadImageFromResource(Image*& image, HINSTANCE hInstance, int resourceID) {
 
 void Idle() {
     nekoIdleTime += 1;
-    if (nekoIdleAnimation == 0 && nekoIdleTime < 10 && dis(gen) == 0) {
+    if (nekoIdleAnimation == 0 && nekoIdleTime < UPDATES_PER_SECOND && dis(gen) == 0) {
     // if (nekoIdleAnimation == 0) {
         // 1: sleeping
         // 2: scratchSelf
