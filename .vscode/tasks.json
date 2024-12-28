@@ -28,7 +28,7 @@
       "type": "shell",
       "command": "clang++",
       "args": [
-        "-static",
+        // "-static",
         // "-LC:\\msys64\\mingw64\\lib",
         "-g",
         "${workspaceFolder}\\Oneko.cpp",
