@@ -4,8 +4,6 @@
 #include <math.h>
 #include <random>
 
-#pragma comment(lib, "gdiplus.lib")
-
 using namespace Gdiplus;
 
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
@@ -365,7 +363,6 @@ void UpdateNeko() {
     nekoX -= (diffX / distance) * NEKO_SPEED;
     nekoY -= (diffY / distance) * NEKO_SPEED;
 
-    nekoX = std::min(std::max(16, nekoX), screenWidth - 16);
-    nekoY = std::min(std::max(16, nekoY), screenWidth - 16);
-
+    nekoX = std::min(nekoX, screenWidth - IMAGE_WIDTH);
+    nekoY = std::min(nekoY, screenWidth - IMAGE_HEIGHT);
 }

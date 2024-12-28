@@ -12,11 +12,11 @@
         "${workspaceFolder}\\Oneko_res.o"
         // "--use-temp-file"
       ],
-      "options": {
-        "env": {
-          "PATH": "${env:PATH};C:\\msys64\\mingw64\\bin\\"
-        }
-      },
+      // "options": {
+      //   "env": {
+      //     "PATH": "${env:PATH};C:\\msys64\\mingw64\\bin\\"
+      //   }
+      // },
       "group": {
         "kind": "build"
         // "isDefault": true
@@ -26,37 +26,40 @@
     {
       "label": "Build Executable",
       "type": "shell",
-      "command": "g++.exe",
+      "command": "clang++",
       "args": [
+        "-static",
+        // "-LC:\\msys64\\mingw64\\lib",
         "-g",
         "${workspaceFolder}\\Oneko.cpp",
         "${workspaceFolder}\\Oneko_res.o",
+        // "C:\\msys64\\mingw64\\lib\\libgcc_s.a",
+        // "C:\\msys64\\mingw64\\lib\\libwinpthread.a",
         "-o",
         "${workspaceFolder}\\Oneko.exe",
-        "-lgdi32",
         "-lgdiplus",
-        "-lwinmm",
         "-lole32",
+        "-lpthread",
         "-mwindows"
       ],
-      "options": {
-        "PATH": "${env:PATH};C:\\msys64\\mingw64\\bin\\"
-      },
+      // "options": {
+      //   "PATH": "${env:PATH};C:\\msys64\\mingw64\\bin\\"
+      // },
       "problemMatcher": ["$gcc"],
       "group": {
-        "kind": "build"
-        // "isDefault": true
+        "kind": "build",
+        "isDefault": true
       },
-      "dependsOn": "Compile Resources",
-      "detail": "compiler: C:\\msys64\\mingw64\\bin\\g++.exe"
+      // "dependsOn": "Compile Resources",
+      "detail": "compiler: clang++"
     },
     {
       "label": "Run Executable",
       "type": "shell",
       "command": "${workspaceFolder}/Oneko.exe",
       "group": {
-        "kind": "build",
-        "isDefault": true
+        "kind": "build"
+        // "isDefault": true
       },
       "dependsOn": "Build Executable",
       "problemMatcher": []
