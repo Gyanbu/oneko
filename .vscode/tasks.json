@@ -47,8 +47,8 @@
       // },
       "problemMatcher": ["$gcc"],
       "group": {
-        "kind": "build",
-        "isDefault": true
+        "kind": "build"
+        // "isDefault": true
       },
       // "dependsOn": "Compile Resources",
       "detail": "compiler: clang++"
@@ -58,8 +58,8 @@
       "type": "shell",
       "command": "${workspaceFolder}/Oneko.exe",
       "group": {
-        "kind": "build"
-        // "isDefault": true
+        "kind": "build",
+        "isDefault": true
       },
       "dependsOn": "Build Executable",
       "problemMatcher": []

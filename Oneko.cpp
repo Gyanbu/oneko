@@ -13,8 +13,8 @@ void UpdateNeko();
 const int IMAGE_COUNT = 32;
 const int IMAGE_WIDTH = 32;
 const int IMAGE_HEIGHT = 32;
-const int UPDATES_PER_SECOND = 11;
 
+const int UPDATES_PER_SECOND = 11;
 const int NEKO_SPEED = 10;
 
 int nekoX = 0;
@@ -55,10 +55,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR szCmdLine,
 
     // Create the window
     HWND hwnd = CreateWindowExW(
-        WS_EX_LAYERED | WS_EX_TOPMOST | WS_EX_TRANSPARENT,// | WS_EX_TOOLWINDOW,  // Extended window styles
+        WS_EX_LAYERED | WS_EX_TOPMOST | WS_EX_TRANSPARENT, // | WS_EX_TOOLWINDOW,  // Extended window styles
         CLASS_NAME,                      // Window class
         nullptr,                        // Window text
-        WS_POPUP | WS_VISIBLE,           // Window style
+        WS_POPUP,                       // Window style
         0, 0,                            // Position
         screenWidth, screenHeight,       // Size
         nullptr, nullptr, hInstance, nullptr);
