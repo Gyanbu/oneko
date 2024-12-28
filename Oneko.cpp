@@ -289,8 +289,8 @@ void UpdateNeko() {
     POINT cursor;
     GetCursorPos(&cursor);
 
-    const float diffX = nekoX - cursor.x;
-    const float diffY = nekoY - cursor.y;
+    const float diffX = nekoX - cursor.x + (IMAGE_WIDTH / 2);
+    const float diffY = nekoY - cursor.y + (IMAGE_HEIGHT / 2);
     const float distance = sqrt(diffX * diffX + diffY * diffY);
 
     if (distance < 48 || distance < NEKO_SPEED) {
@@ -363,6 +363,6 @@ void UpdateNeko() {
     nekoX -= (diffX / distance) * NEKO_SPEED;
     nekoY -= (diffY / distance) * NEKO_SPEED;
 
-    nekoX = std::min(nekoX, screenWidth - IMAGE_WIDTH);
-    nekoY = std::min(nekoY, screenWidth - IMAGE_HEIGHT);
+    nekoX = std::max(std::min(nekoX, screenWidth - IMAGE_WIDTH), 0);
+    nekoY = std::max(std::min(nekoY, screenHeight - IMAGE_HEIGHT), 0);
 }
